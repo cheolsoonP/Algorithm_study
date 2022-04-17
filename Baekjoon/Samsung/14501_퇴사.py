@@ -13,5 +13,29 @@ DFS, BFS 문제. 1일을 수행 -> 이후 일정 ->
 2일을 수행 -> 이후 일정
 ...
 BFS, DFS 문제를 책으로 풀어 보고 오자.
+-> DP 문제
 
 """
+
+
+n = int(input())
+
+graph = []
+for i in range(n):
+    graph.append(list(map(int, input().split())))
+
+
+def dfs(x, cost):
+    if x >= n:
+        return cost
+
+    if x < n:
+        dfs(graph[x][0] + x, cost + graph[x][1])
+
+
+
+max_cost = 0
+for i in range(n):
+    max_cost = max(max_cost, dfs(i, 0))
+
+print(max_cost)
