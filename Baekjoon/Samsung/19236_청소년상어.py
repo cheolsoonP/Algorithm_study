@@ -1,149 +1,110 @@
 """
-청소년 상어
-4x4 크기 공간
-각 칸은 x, y로 표현 x-행, y-열
-물고기는 번호와 방향을 가진다.
-1 <= 번호 <= 16
+청소년 상어가 있다
+물고기는 1~16까지
+방향은 상하좌우 대각선 8가지
+청소년 상어는 처음에 0,0에서 시작
+상어의 방향은 0,0의 물고기 방향
 
-두 물고기는 서로 다른 번호를 가진다
-방향은 8가지 상하좌우 대각선 중 하나
-[1]
-청소년 상어는 0,0에 물고기를 먹고 0,0에 들어간다
-상어의 방향은 0,0에 있던 물고기 방향과 같다
-이후 물고기가 이동
-
-[2]
-(1~16번까지)
-물고기는 번호가 작은 물고기부터 순서대로 이동한다.
-물고기는 한칸을 이동할 수 있고,
-이동할 수 있는 칸은 빈칸과 다른 물고기가 있는 칸,
-
-이동할 수 없는 칸은 상어가 있거나, 공간의 경계를 넘는 칸이다.
-각 물고기는 방향이 이동할 수 있는 칸을 향할 때까지
-방향을 45도 반시계 화전
-만약 이동할 수 없는 칸이 없으면 이동을 하지 않음
-그외의 경우 그 칸으로 이동
-물고기가 다른 물고기가 있는 칸으로 이동할 때는 서로 위치를 바꿈
-
-물고기 이동이 모두 끝나면 상어 이동
-상어는 방향에 있는 칸으로 이동 가능, 한번에 여러 칸 이동 가능
-상어가 물고기가 있는 칸으로 이동하면 그 칸의 물고기를 먹고
-그 물고기의 방향을 가진다.
-이동중에 지나가는 칸에 물고기는 먹지 않음
-물고기가 없는 칸으로 이동할 수 없다.
-
-상어가 이동할 수 있는 칸이 없다면 집으로 간다.
-
-물고기 이동 -> 상어 이동 (반복)
-
-1. 상어 0,0으로 이동,
+1. 상어가 0,0 들어감
 2. 물고기 이동
-    물고기 번호가 낮은 것부터 이동
-    2-1 이동 시 해당 방향으로 이동 그 방향이 막혀있을시 반시계 회전, 이동
-    2-2 이동 시 범위가 넘어간다면 반시계로 방향 회전
-    2-3 이동 시 상어가 있다면 반시계로 방향 회전
-    2-4 이동 시 물고기가 있다면 위치 교환
-    2-5 이동 시 빈칸이라면 그곳으로 이동
-    (모든 물고기를 반복)
-3. 상어 이동
-    3-1 물고기의 방향으로 이동가능, 여러칸 가능
-    3-2 BFS로 DFS로 모든 곳의 경우를 따짐.
-    3-3 위치를 초과해야하거나, 해당 방향에 먹을 물고기가 없다면 종료
+각 방향으로 1씩 막혀있거나, 상어가 있거나 하면 방향바꿈
+반시계로 45도 회전
+다른물고기가 있으면 자리 교환
+숫자가 작은 물고기부터 움직인다.
+3-1. 상어 이동할 수 있는 곳 확인
+3. 상어 이동 여러칸 이동가능 그 방향으로 그 칸에 물고기를 먹고
+방향을 가진다 지나가는칸 먹지 않는다 물고기 없는 곳으로 못간다
+상어가 이동할 곳이 없으면 종료
+-> 물고기 이동 -> 상어이동 반복
 
+상어가 먹은 물고기 숫자합 최대값 출력
 """
-
 import copy
 
-graph = [[] * 4 for _ in range(4)]
+# 4 X 4 크기 격자에 존재하는 각 물고기의 번호(없으면 -1)와 방향 값을 담는 테이블
+array = [[None] * 4 for _ in range(4)]
+
 for i in range(4):
     data = list(map(int, input().split()))
+    # 매 줄마다 4마리의 물고기를 하나씩 확인하며
     for j in range(4):
-        graph[i].append([data[j*2], data[j*2+1]])
+        # 각 위치마다 [물고기의 번호, 방향]을 저장
+        array[i][j] = [data[j * 2], data[j * 2 + 1] - 1]
 
-# 1~8 위 왼위 왼 왼아 아 오아 오 오위
-# 반시계 순서
-dr = [0, -1, -1, 0, 1, 1, 1, 0, -1]
-dc = [0, 0, -1, -1, -1, 0, 1, 1, 1]
+# 8가지 방향에 대한 정의
+dx = [-1, -1, 0, 1, 1, 1, 0, -1]
+dy = [0, -1, -1, -1, 0, 1, 1, 1]
 
-# 초기 상어 위치, 방향 정의
-cur_dir = graph[0][0][1]
+# 현재 위치에서 왼쪽으로 회전된 결과 반환
+def turn_left(direction):
+    return (direction + 1) % 8
 
-# 초기 물고기(1~16)
-fishes = [1 for _ in range(17)]
-fishes[0] = -1
-result = 0
+result = 0 # 최종 결과
 
-
-def move_fish(graph, cur_r, cur_c):
-    # 번호 순서대로 물고기 이동(먹힌 물고기는 제외)
-    for fish_num in range(1, 17):
-        if fishes[fish_num] == 1:
-            r, c = 0, 0
-            fdir = 0
-
-            for i in range(4):
-                for j in range(4):
-                    if graph[i][j][0] == fish_num:
-                        r, c = i, j
-                        fdir = graph[i][j][1]
-
-            for i in range(1, 9):
-                nr, nc = r + dr[fdir], c + dc[fdir]
-
-                # 이동 시 범위안에 있고, 상어가 아닐 때
-                if 0 <= nr < 4 and 0 <= nc < 4:
-                    # 이동 시 물고기가 있거나, 0이면 switch
-                    if graph[nr][nc][0] >= 0:
-                        graph[nr][nc], graph[r][c] = graph[r][c], graph[nr][nc]
-                        break
-                # 이동 시 범위가 넘어가거나 상어가 있다면 반시계로 회전
-                fdir = (fdir + i) % 8
-                graph[r][c][1] = fdir
-
-
-# 상어가 먹을 수 있는 물고기들 위치 반환
-def get_fish_list(graph, cur_r, cur_c):
-    global cur_dir
-    positions = []
+# 현재 배열에서 특정한 번호의 물고기 위치 찾기
+def find_fish(array, index):
     for i in range(4):
-        nr, nc = cur_r + (i * dr[cur_dir]), cur_c + (i * dc[cur_dir])
-        if 0 <= nr < 4 and 0 <= nc < 4:
-            if graph[nr][nc][0] > 0:
-                positions.append([nr, nc])
+        for j in range(4):
+            if array[i][j][0] == index:
+                return (i, j)
+    return None
 
+# 모든 물고기를 회전 및 이동시키는 함수
+def move_all_fishes(array, now_x, now_y):
+    # 1번부터 16번까지의 물고기를 차례대로 (낮은 번호부터) 확인
+    for i in range(1, 17):
+        # 해당 물고기의 위치를 찾기
+        position = find_fish(array, i)
+        if position != None:
+            x, y = position[0], position[1]
+            direction = array[x][y][1]
+            # 해당 물고기의 방향을 왼쪽으로 계속 회전시키며 이동이 가능한지 확인
+            for j in range(8):
+                nx = x + dx[direction]
+                ny = y + dy[direction]
+                # 해당 방향으로 이동이 가능하다면 이동 시키기
+                if 0 <= nx and nx < 4 and 0 <= ny and ny < 4:
+                    if not (nx == now_x and ny == now_y):
+                        array[x][y][1] = direction
+                        array[x][y], array[nx][ny] = array[nx][ny], array[x][y]
+                        break
+                direction = turn_left(direction)
+
+# 상어가 현재 위치에서 먹을 수 있는 모든 물고기의 위치 반환
+def get_possible_positions(array, now_x, now_y):
+    positions = []
+    direction = array[now_x][now_y][1]
+    # 현재의 방향으로 쭉 이동하기
+    for i in range(4):
+        now_x += dx[direction]
+        now_y += dy[direction]
+        # 범위를 벗어나지 않는지 확인하며
+        if 0 <= now_x and now_x < 4 and 0 <= now_y and now_y < 4:
+            # 물고기가 존재하는 경우
+            if array[now_x][now_y][0] != -1:
+                positions.append((now_x, now_y))
     return positions
 
+# 모든 경우를 탐색하기 위한 DFS 함수
+def dfs(array, now_x, now_y, total):
+    global result
+    array = copy.deepcopy(array) # 리스트를 통째로 복사
 
-# 모든 경우의 수 탐색
-def dfs(graph, cur_r, cur_c, total):
-    global result, fishes, cur_dir
-    graph = copy.deepcopy(graph)
+    total += array[now_x][now_y][0] # 현재 위치의 물고기 먹기
+    array[now_x][now_y][0] = -1 # 물고기를 먹었으므로 번호 값을 -1로 변환
 
-    # 현재 위치 물고기 먹기
-    total += graph[cur_r][cur_c][0]
-    fishes[graph[cur_r][cur_c][0]] = 0
-    cur_dir = graph[cur_r][cur_c][1]
+    move_all_fishes(array, now_x, now_y) # 전체 물고기 이동 시키기
 
-    # 상어 위치 -1로 바꾸기
-    graph[cur_r][cur_c][0] = -1
-    graph[cur_r][cur_c][1] = 0
-
-    # 물고기 이동
-    move_fish(graph, cur_r, cur_c)
-
-    # 상어 이동할 수 있는 위치 확인
-    positions = get_fish_list(graph, cur_r, cur_c)
-
-    # 상어가 이동할 수 없다면
+    # 이제 다시 상어가 이동할 차례이므로, 이동 가능한 위치 찾기
+    positions = get_possible_positions(array, now_x, now_y)
+    # 이동할 수 있는 위치가 하나도 없다면 종료
     if len(positions) == 0:
-        result = max(result, total)
+        result = max(result, total) # 최댓값 저장
         return
-    # 모든 위치로 이동
-    for next_r, next_c in positions:
-        graph[cur_r][cur_c][0] = 0
-        dfs(graph, next_r, next_c, total)
+    # 모든 이동할 수 있는 위치로 재귀적으로 수행
+    for next_x, next_y in positions:
+        dfs(array, next_x, next_y, total)
 
-
-dfs(graph, 0, 0, 0)
-# 먹을 수 있는 물고기 번호의 합 출력
+# 청소년 상어의 시작 위치(0, 0)에서부터 재귀적으로 모든 경우 탐색
+dfs(array, 0, 0, 0)
 print(result)
