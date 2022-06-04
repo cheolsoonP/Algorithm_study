@@ -1,3 +1,4 @@
+# 13458 시험감독
 # 문제
 # 총 N개의 시험장이 있고, 각각의 시험장마다 응시자들이 있다. i번 시험장에 있는 응시자의 수는 Ai명이다.
 
@@ -26,32 +27,6 @@
 # 셋째줄 - B(총감독이 담당할수있는 인원)와 C(부감독이 담당가능한 인원)
 # Ai <= C / Ai <= B / B, C < Ai
 # -> 각 시험장에 필요한 감독 수를 계산, 각 시험장마다 총감독, 부감독이 있음, 각 시험장별 감당 가능한 인원 B + xC
-
-# 04.14
-# def findMinManager(studentsList, firstManager, secondManager):
-#     count = 0
-#
-#     for students in studentsList:
-#         if students <= firstManager:
-#             count += 1
-#         elif students <= firstManager + secondManager:
-#             count += 2
-#         else:
-#             # 총감독 1명
-#             count += 1
-#             if (students - firstManager) % secondManager:
-#                 # 부감독 n명
-#                 count += (((students - firstManager) // secondManager) + 1)
-#             else:
-#                 count += ((students - firstManager) // secondManager)
-#
-#     return count
-#
-# N = int(input())
-# studentsList = list(map(int, input().split()))
-# firstManager, secondManager = map(int, input().split())
-#
-# print(findMinManager(studentsList, firstManager, secondManager))
 
 def findMinManager():
     count = N

@@ -1,3 +1,4 @@
+# 12100 2048
 import sys
 from copy import deepcopy
 

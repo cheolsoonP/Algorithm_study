@@ -1,4 +1,5 @@
 """
+21608 상어초등학교
 nxn
 
 학생수 n^2
@@ -77,12 +78,10 @@ def select_sit(student):
     return final_x, final_y
 
 
-
 for i in range(n * n):
     x, y = select_sit(favorite[i])
     graph[x][y] = favorite[i][0]
 result = 0
-
 
 for i in range(n):
     for j in range(n):

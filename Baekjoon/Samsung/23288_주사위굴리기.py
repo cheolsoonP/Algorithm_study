@@ -1,5 +1,5 @@
 """
-주사위 굴리기
+23288 주사위 굴리기 2
 N x M
 오른쪽은 동쪽, 위쪽은 북쪽
 r, c
@@ -47,6 +47,7 @@ dy = [0, 1, 0, -1]
 
 # 방향, 처음에는 동쪽, 우측으로 향함(0~3)
 direction = 1
+
 
 def move_top():
     dice[0], dice[1], dice[4], dice[5] = dice[4], dice[0], dice[5], dice[1]
@@ -126,7 +127,7 @@ def get_direction(direction):
     return direction
 
 
-
+# main
 direction = 1  # 초기 방향 오른쪽
 total = 0
 cur_x, cur_y = 0, 0

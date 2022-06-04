@@ -1,4 +1,5 @@
 """
+16236 아기상어
 NxN
 물고기 M 마리
 처음 아기상어 크기 - 2
@@ -28,28 +29,6 @@ NxN
 
 """
 from collections import deque
-
-n = int(input())
-
-graph = []
-temp = [[0] * n for _ in range(n)]
-for i in range(n):
-    graph.append(list(map(int, input().split())))
-
-# 상어 초기 위치 찾기, 그 위치에 아무도 없다고 하기
-now_size = 2
-eat = 0
-now_r, now_c = 0, 0
-times = 0
-for i in range(n):
-    for j in range(n):
-        if graph[i][j] == 9:
-            now_r, now_c = i, j
-            graph[now_r][now_c] = 0
-
-# 상, 하, 좌, 우
-dr = [1, -1, 0, 0]
-dc = [0, 0, -1, 1]
 
 
 # 최단 거리 구하기 (현재 상어에서 각 물고기까지)
@@ -93,20 +72,46 @@ def find_fish(dist):
         return next_r, next_c, cost
 
 
-while True:
-    value = find_fish(bfs())
-    if value is None:
-        print(times)
-        break
-    else:
-        # 시간 추가
-        times += value[2]
-        # 현재 좌표 수정
-        now_r, now_c = value[0], value[1]
-        graph[now_r][now_c] = 0
+#####################################################
+# Main
+T = int(input())
+for testcase in range(1, T+1):
+    n = int(input())
 
-        # 상어가 충분히 먹으면 성장
-        eat += 1
-        if eat >= now_size:
-            now_size += 1
-            eat = 0
+    graph = []
+    temp = [[0] * n for _ in range(n)]
+    for i in range(n):
+        graph.append(list(map(int, input().split())))
+
+    # 상어 초기 위치 찾기, 그 위치에 아무도 없다고 하기
+    now_size = 2
+    eat = 0
+    now_r, now_c = 0, 0
+    times = 0
+    for i in range(n):
+        for j in range(n):
+            if graph[i][j] == 9:
+                now_r, now_c = i, j
+                graph[now_r][now_c] = 0
+
+    # 상, 하, 좌, 우
+    dr = [1, -1, 0, 0]
+    dc = [0, 0, -1, 1]
+
+    while True:
+        value = find_fish(bfs())
+        if value is None:
+            print("#"+str(testcase), times)
+            break
+        else:
+            # 시간 추가
+            times += value[2]
+            # 현재 좌표 수정
+            now_r, now_c = value[0], value[1]
+            graph[now_r][now_c] = 0
+
+            # 상어가 충분히 먹으면 성장
+            eat += 1
+            if eat >= now_size:
+                now_size += 1
+                eat = 0
