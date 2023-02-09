@@ -1,33 +1,29 @@
+N, r, c = map(int, input().split())
 
-"""
-Z모양 탐색
-2^n x 2^n 배열
-Z모양 탐색
+ans = 0
 
-"""
+while N != 0:
 
-def dfs(x, y):
-    global r, c, count
+    N -= 1
 
-    for x in range(i, i + 2):
-        for y in range(j, j + 2):
-            graph[x][y] = count
-            count += 1
-            if x == r and y == c:
-                print(graph[r][c])
-                return
+    # 1사분면
+    if r < 2 ** N and c < 2 ** N:
+        ans += (2 ** N) * (2 ** N) * 0
 
+    # 2사분면
+    elif r < 2 ** N and c >= 2 ** N:
+        ans += (2 ** N) * (2 ** N) * 1
+        c -= (2 ** N)
 
-n, r, c = map(int, input().split())
-graph = [[0 for _ in range(0, 2**n)] for _ in range(0, 2**n)]
-count = 0
+    # 3사분면
+    elif r >= 2 ** N and c < 2 ** N:
+        ans += (2 ** N) * (2 ** N) * 2
+        r -= (2 ** N)
 
-gap = n**2
+    # 4사분면
+    else:
+        ans += (2 ** N) * (2 ** N) * 3
+        r -= (2 ** N)
+        c -= (2 ** N)
 
-for i in range(0, 2**n, gap):
-    for j in range(0, 2**n, gap):
-        if i <= r < i+gap and j <= c < j+gap:
-            dfs(i, j)
-        else:
-            count += 4
-
+print(ans)
