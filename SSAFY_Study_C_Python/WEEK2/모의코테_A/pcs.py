@@ -165,7 +165,7 @@ def move_position():
     for dir in max_move:
         sx += ddx[dir]
         sy += ddy[dir]
-        smell[sx][sy] = 2
+        smell[sx][sy] = 3
         graph[sx][sy] = []
 
 
