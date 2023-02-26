@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c34a14ab-4d98-4263-a9e3-e9031886966c" name="Default Changelist" comment="[BOJ] 3967_매직스타">
-      <change afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_B_17404/pcs.py" afterDir="false" />
+    <list default="true" id="c34a14ab-4d98-4263-a9e3-e9031886966c" name="Default Changelist" comment="[BOJ] 17404_RGB거리">
+      <change afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_C_1303/pcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,28 +57,7 @@
       <recent name="C:\Users\Cheolsoon\Desktop\algorithm_study\boj_study_SSAFY\WEEK1\BOJ_3709" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pcs (3)">
-    <configuration name="22860" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="algorithm_study" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Program Files\pypy3.7-v7.3.4-win64\pypy3.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/boj_study_SSAFY/WEEK2/22860.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.pcs (4)">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="algorithm_study" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,6 +142,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pcs (4)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithm_study" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\pypy3.7-v7.3.4-win64\pypy3.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_C_1303/pcs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="pcs" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="algorithm_study" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,11 +186,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pcs (4)" />
         <item itemvalue="Python.pcs (3)" />
         <item itemvalue="Python.pcs (2)" />
         <item itemvalue="Python.pcs" />
         <item itemvalue="Python.pcs (1)" />
-        <item itemvalue="Python.22860" />
       </list>
     </recent_temporary>
   </component>
@@ -301,7 +301,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677391306886</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="[BOJ] 17404_RGB거리">
+      <created>1677395581406</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1677395581406</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,6 +339,7 @@
     <MESSAGE value="[algorithm] study week2 - 02.16" />
     <MESSAGE value="[algorithm] study week2 - 02.19" />
     <MESSAGE value="[BOJ] 3967_매직스타" />
-    <option name="LAST_COMMIT_MESSAGE" value="[BOJ] 3967_매직스타" />
+    <MESSAGE value="[BOJ] 17404_RGB거리" />
+    <option name="LAST_COMMIT_MESSAGE" value="[BOJ] 17404_RGB거리" />
   </component>
 </project>
