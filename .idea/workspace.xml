@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c34a14ab-4d98-4263-a9e3-e9031886966c" name="Default Changelist" comment="[BOJ] 1522_문자열 교환">
+    <list default="true" id="c34a14ab-4d98-4263-a9e3-e9031886966c" name="Default Changelist" comment="[BOJ] 16637_괄호 추가하기">
+      <change afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_E_24439/pcs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/java/java_algorithm/src/0227/Main_2567_색종이2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_B_17404/pcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_B_17404/pcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_D_16637/pcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_D_16637/pcs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,7 +60,7 @@
       <recent name="C:\Users\Cheolsoon\Desktop\algorithm_study\boj_study_SSAFY\WEEK1\BOJ_3709" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.pcs (5)">
+  <component name="RunManager" selected="Python.pcs">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="algorithm_study" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -92,27 +95,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_F_1522/pcs.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pcs (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="algorithm_study" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="C:\Program Files\pypy3.7-v7.3.4-win64\pypy3.exe" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_A_3967/pcs.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -184,13 +166,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pcs" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="algorithm_study" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Program Files\pypy3.7-v7.3.4-win64\pypy3.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_E_24439/pcs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.pcs" />
         <item itemvalue="Python.pcs (5)" />
         <item itemvalue="Python.pcs (1)" />
         <item itemvalue="Python.pcs (4)" />
         <item itemvalue="Python.pcs (3)" />
-        <item itemvalue="Python.pcs (2)" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677399358606</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="[BOJ] 16637_괄호 추가하기">
+      <created>1677425976114</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1677425976114</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -356,6 +366,7 @@
     <MESSAGE value="[BOJ] 17404_RGB거리" />
     <MESSAGE value="[BOJ] 1303_전쟁-전투" />
     <MESSAGE value="[BOJ] 1522_문자열 교환" />
-    <option name="LAST_COMMIT_MESSAGE" value="[BOJ] 1522_문자열 교환" />
+    <MESSAGE value="[BOJ] 16637_괄호 추가하기" />
+    <option name="LAST_COMMIT_MESSAGE" value="[BOJ] 16637_괄호 추가하기" />
   </component>
 </project>
