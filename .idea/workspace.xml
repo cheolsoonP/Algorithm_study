@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c34a14ab-4d98-4263-a9e3-e9031886966c" name="Default Changelist" comment="[BOJ] 16637_괄호 추가하기">
-      <change afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_E_24439/pcs.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/java/java_algorithm/src/0227/Main_2567_색종이2" afterDir="false" />
+    <list default="true" id="c34a14ab-4d98-4263-a9e3-e9031886966c" name="Default Changelist" comment="[BOJ] 2567 색종이 - 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_B_17404/pcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_B_17404/pcs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_D_16637/pcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/SSAFY_Study_C_Python/WEEK3/BOJ_D_16637/pcs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +40,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/SSAFY_Study_C_Python" />
+    <property name="run.code.analysis.last.selected.profile" value="aDefault" />
     <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
   </component>
   <component name="RecentsManager">
@@ -332,7 +329,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677425976114</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="[BOJ] 2567 색종이 - 2">
+      <created>1677500491721</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1677500491721</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,6 +371,7 @@
     <MESSAGE value="[BOJ] 1303_전쟁-전투" />
     <MESSAGE value="[BOJ] 1522_문자열 교환" />
     <MESSAGE value="[BOJ] 16637_괄호 추가하기" />
-    <option name="LAST_COMMIT_MESSAGE" value="[BOJ] 16637_괄호 추가하기" />
+    <MESSAGE value="[BOJ] 2567 색종이 - 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="[BOJ] 2567 색종이 - 2" />
   </component>
 </project>
