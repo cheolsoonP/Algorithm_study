@@ -2,48 +2,45 @@
 [BOJ] 16637_괄호 추가하기
 23.02.26
 
-길이 N 수식
-수식 0보다 크거나 같고 9보다 작은 정수
-연산자 + - x
-우선순위는 모두 동일, 왼쪽부터 순서대로 계산
-괄호를 추가하면 괄호부터 계산한다.
-괄호안에 연산자는 하나만 가능
+괄호 넣지 않고 계산, 괄호 넣고 계산
 
-중첩괄호 올바른 식 아니다
-
-수식 -> 괄호를 적절히 추가 -> 만들 수 있는 식의 결과의 최댓값을 구해라
-괄호 개수 제한 없다.
-추가하지 않아도 된다.
-0. 최대 괄호 개수 구하기
-1. 괄호 들어갈 수 있는 조합
-2. 해당 위치에 괄호 넣고 계산하기
-
-수식 길이 1 ~ 19
 """
 
 n = int(input())
 arr = list(input())
-new_arr = []
-ans = 0
-max_br = n//2
-br_pos = []
-print(ord('0'))
-print(arr)
-
-def dfs(br_cnt):
-    if br_cnt == 0:
-        # 계산
+res = -1e9
 
 
-    for i in range(n):
-        new_arr.append('(')
-        new_arr.append(')')
+def calc(a, b, op):  # 계산하는 함수
+    if op == '+':
+        return a + b
+    elif op == '*':
+        return a * b
+    elif op == '-':
+        return a - b
 
 
-def braket():
-    global new_arr
-    # 괄호 0개 있을 때 ~ 괄호 N개 있을 때
-    for i in range(0, max_br+1):
-        new_arr = []
-        dfs(i)
+def dfs(idx, before):
+    global res
+    if idx >= n:
+        res = max(res, before)  # result = 누적 계산값의 최대
+        return
+
+    temp = 0
+    op = '+' if (idx < 2) else arr[idx-1]   # operation = 처음은 '+', 이후에는 idx-1번째 원소의 연산자
+                                            #  (idx-1) (idx) (idx+1) (idx+2) (idx-1)
+                                            # 3   +     8       *       7      -      9 * 2
+    # 괄호 X
+    temp = calc(before, ord(arr[idx])-ord('0'), op)  # 이전 계산값 (연산자) 현재 idx
+    dfs(idx+2, temp)   # 다음 연산 실행(괄호 없이 순차적으로)
+
+    # 괄호 O
+    if idx+2 < n:  # 괄호를 넣고 연산을 할 수 있다면
+        temp = calc(ord(arr[idx])-ord('0'), ord(arr[idx+2])-ord('0'), arr[idx+1])  # 괄호 먼저 계산
+        temp = calc(before, temp, op)  # 이전 계산값 (연산자) 괄호 계산 값
+        dfs(idx+4, temp)  # (idx-1 ~ idx+2) 총 4개 원소 사용
+
+
+dfs(idx=0, before=0)
+print(res)
 
