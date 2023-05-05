@@ -81,7 +81,7 @@ public class Main {
 				if(nx >= N) nx = 0;
 				if(ny >= M) ny = 0;
 				
-				q.offer(new Box(nx, ny, temp.size+1, temp.str.concat(String.valueOf(graph[nx][ny]))));
+				q.offer(new Box(nx, ny, temp.size+1, temp.str+graph[nx][ny]));
 			}
 		}
 	}
