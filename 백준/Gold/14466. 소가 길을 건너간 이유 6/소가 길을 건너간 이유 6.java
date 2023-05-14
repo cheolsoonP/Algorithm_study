@@ -85,6 +85,7 @@ public class Main {
 			if(nx<0 || nx>=N || ny<0 || ny>=N) continue;
 			if(visited[nx][ny]) continue;
 			
+//			if(bridge[x][y].contains(new int[] {nx,ny})) continue; ;
 			boolean isBridge = false;
 			for(int k=0;k<bridge[x][y].size();k++) {
 				int temp [] = bridge[x][y].get(k);
