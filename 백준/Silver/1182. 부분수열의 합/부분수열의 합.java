@@ -29,16 +29,25 @@ public class Main {
 	}
 	
 	private static void func(int start, int num) {
-		if (num == S) {
-			result++;
+		if (start == N) {
+			if (num == S) {
+				result++;
+			}			
 		}
+
+		// 1. 방문을 이용 
+//		for (int i=start;i<N;i++) {
+//			if (visited[i]) continue;
+//			visited[i] = true;
+//			func(i, num+arr[i]);
+//			visited[i] = false;
+//		}
 		
-		for (int i=start;i<N;i++) {
-			if (visited[i]) continue;
-			visited[i] = true;
-			func(i, num+arr[i]);
-			visited[i] = false;
-		}
+		
+		// 2. 선택할 지 안할지로 
+		if (start >= N) return;
+		func(start+1, num+arr[start]);
+		func(start+1, num);
 		
 	}
 	
