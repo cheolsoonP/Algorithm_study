@@ -71,6 +71,14 @@ public class Main {
 		}
 		
 		for (int i=0;i<4;i++) {
+			int[] camInfo = cam.get(idx);
+			int camNum = camInfo[2];
+			if (camNum == 2) { // 2번만 
+				if (i>1) continue;
+			}
+			if (camNum == 5) { // 1번만 
+				if (i>0) continue;
+			}
 			dir[idx] = i;
 			dfs(idx+1);
 		}
@@ -101,15 +109,8 @@ public class Main {
 			if (camNum == 1) {
 				spread(x,y,dir[i]);
 			} else if (camNum == 2) {
-				if (dir[i] <= 1) {
-					// 상하
-					spread(x,y,0);
-					spread(x,y,2);
-				} else {
-					// 좌우
-					spread(x,y,1);
-					spread(x,y,3);
-				}
+				spread(x,y,dir[i]);
+				spread(x,y,dir[i]+2);
 			} else if (camNum == 3) {
 				spread(x,y,dir[i]);
 				spread(x,y,dir[i]+1);
