@@ -22,20 +22,21 @@ public class Main {
 			arr[i] = Integer.parseInt(st.nextToken());
 		}
 		
-		func(0, 0, 0);
+		func(0, 0);
 		
+		if (S == 0) result--;
 		System.out.println(result);
 	}
 	
-	private static void func(int start, int num, int cnt) {
-		if (cnt != 0 && num == S) {
+	private static void func(int start, int num) {
+		if (num == S) {
 			result++;
 		}
 		
 		for (int i=start;i<N;i++) {
 			if (visited[i]) continue;
 			visited[i] = true;
-			func(i, num+arr[i], cnt+1);
+			func(i, num+arr[i]);
 			visited[i] = false;
 		}
 		
