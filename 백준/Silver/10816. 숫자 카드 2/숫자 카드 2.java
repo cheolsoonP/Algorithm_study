@@ -1,63 +1,32 @@
-import java.io.*;
 import java.util.*;
+import java.io.*;
 
 public class Main {
-	
-	static int N, M;
-	static int[] arr;
-	
-	
-	
 	public static void main(String[] args) throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer st = null;
-		StringBuilder sb = new StringBuilder();
-		 
-		N = Integer.parseInt(in.readLine());
-		arr = new int[N];
-		st = new StringTokenizer(in.readLine());
+		int N = Integer.parseInt(in.readLine());
+		Map<Integer, Integer> map = new HashMap<>();
+		
+		StringTokenizer st = new StringTokenizer(in.readLine());
 		for (int i=0;i<N;i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+			int num = Integer.parseInt(st.nextToken());
+			if (map.containsKey(num)) {
+				map.put(num, map.get(num)+1);
+			} else {
+				map.put(num, 1);
+			}
 		}
-		
-		Arrays.sort(arr);
-//		System.out.println(Arrays.toString(arr));
-		
-		M = Integer.parseInt(in.readLine());
+		int M = Integer.parseInt(in.readLine());
 		st = new StringTokenizer(in.readLine());
+		StringBuilder sb = new StringBuilder(); 
 		for (int i=0;i<M;i++) {
-			int num = Integer.parseInt(st.nextToken()); 
-			int lowerIdx = findLowerIdx(num);
-			int upperIdx = findUpperIdx(num);
-			sb.append(upperIdx - lowerIdx).append(" ");
+			int num = Integer.parseInt(st.nextToken());
+			if (map.containsKey(num)) {
+				sb.append(map.get(num)).append(" ");
+			} else {
+				sb.append(0).append(" ");
+			}
 		}
 		System.out.println(sb.toString());
-	}
-
-
-
-	private static int findUpperIdx(int num) {
-		int start = 0; 
-		int end = N;
-		
-		while(start<end) {
-			int mid = (start+end)/2;
-			if(arr[mid] > num) end = mid;
-			else start = mid+1;
-		}
-		return start;
-	}
-
-
-	private static int findLowerIdx(int num) {
-		int start = 0; 
-		int end = N;
-		
-		while(start<end) {
-			int mid = (start+end)/2;
-			if(arr[mid] >= num) end = mid;
-			else start = mid+1;
-		}
-		return start;
 	}
 }
