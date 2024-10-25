@@ -3,15 +3,14 @@ import java.util.*;
 
 public class Main {
 	static int N, M;
-	static Map<Integer, String> pocketMonNum;
+	static String[] pocketMonNum;
 	static Map<String, Integer> pocketMonName;
 	
 	
 	public static void main(String[] args) throws Exception {
-
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st; 
-		pocketMonNum = new HashMap<>(); 
+		pocketMonNum = new String[100001];
 		pocketMonName = new HashMap<>(); 
 		
 		st = new StringTokenizer(in.readLine());
@@ -20,7 +19,7 @@ public class Main {
 		
 		for (int i=1;i<=N;i++) {
 			String name = in.readLine();
-			pocketMonNum.put(i, name);
+			pocketMonNum[i] = name;
 			pocketMonName.put(name, i);
 		}
 		
@@ -28,7 +27,7 @@ public class Main {
 			String q = in.readLine();
 			if (q.charAt(0) >= '1' && q.charAt(0) <= '9') {
 				int num = Integer.parseInt(q);
-				System.out.println(pocketMonNum.get(num));
+				System.out.println(pocketMonNum[num]);
 			} else {
 				System.out.println(pocketMonName.get(q));
 			}
