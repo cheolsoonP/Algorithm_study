@@ -1,36 +1,40 @@
 import java.util.*;
-import java.io.*;
+import java.io.*; 
 
 public class Main {
-	
 	public static void main(String[] args) throws Exception {
 		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = null; 
+		/*
+		 * DP[1] = 1; 
+		 * for i=0~N-1  
+		 * 		for j=0~i-1 
+		 * 			if (arr[j] < arr[i]) 
+		 * 				DP[i] = Math.max(DP[i], DP[j]+1); 
+		 * 
+		 * DP[i] = 
+		 * */
 		
-		StringTokenizer st = null;
-		
-		int n = Integer.parseInt(in.readLine());
-		int arr[] = new int[n];
-		int dp[] = new int[n];
-		
-		Arrays.fill(dp,1);
+		int N = Integer.parseInt(in.readLine());
 		st = new StringTokenizer(in.readLine());
-		for(int i=0;i<n;i++) {
-			arr[i] = Integer.parseInt(st.nextToken());
+		int[] A = new int[N];
+		int[] DP = new int[N];
+		for (int i=0;i<N;i++) {
+			A[i] = Integer.parseInt(st.nextToken());
+			DP[i] = 1;
 		}
-		
-		for(int i=0;i<n;i++) {
-			for(int j=0;j<=i;j++) {
-				if(arr[j] < arr[i]) {
-					dp[i] = Math.max(dp[i], dp[j] + 1);
+		DP[0] = 1; 
+		int result = DP[0];
+		for (int i=1;i<N;i++) {
+			for (int j=0;j<i;j++) {
+				if (A[j] < A[i]) {
+					DP[i] = Math.max(DP[i], DP[j]+1);
+					result = Math.max(DP[i], result);
 				}
 			}
 		}
 		
-		int result = 0;
-		for(int i=0;i<n;i++) {
-			result = Math.max(result, dp[i]);
-		}
 		System.out.println(result);
-		
 	}
+
 }
