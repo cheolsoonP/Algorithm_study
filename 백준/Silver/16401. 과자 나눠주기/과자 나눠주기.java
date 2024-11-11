@@ -12,16 +12,6 @@ public class Main {
 		StringTokenizer st; 
 		StringBuilder sb = new StringBuilder();
 	
-		/*
-		 * 과자의 길이 배열에서 가장 긴 Max를 찾는다 
-		 * 문제 과자 길이 최소는 1 -> left 최대값 -> right 
-		 * mid -> 각 길이에서 mid로 나눈 몫을 다 더한다. 
-		 * 다 더한 결과가 원하는 개수보다 많다면 -> left = mid+1 
-		 * 원하는 개수보다 적다면 -> right = mid-1 
-		 * left <= right 동안 반복한다. 
-		 * 
-		 * */
-		
 		st = new StringTokenizer(in.readLine());
 		M = Integer.parseInt(st.nextToken());
 		N = Integer.parseInt(st.nextToken());
@@ -43,6 +33,7 @@ public class Main {
 			int cnt = 0;
 			for (int i=0;i<N;i++) {
 				cnt += (arr[i] / mid);
+				if (cnt >= M) break; // 빠르게
 			}
 			if (cnt >= M) {
 				left = mid+1;
