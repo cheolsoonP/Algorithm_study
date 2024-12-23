@@ -20,15 +20,16 @@ public class Main {
 		int right = 0; 
 		int cnt = 0; 
 		int sum = 0; 
-		while(left<list.size()) {
-			if (sum == target) cnt++;
-
-			if (sum < target && right < list.size()) {
-				sum += list.get(right++);
-			} else {
-				sum -= list.get(left++);
-			}			
-		}
+        while(true) {
+            if (sum >= target) {
+                if (sum == target) cnt++;
+                sum -= list.get(left++);
+            } else if (right == list.size()) {
+                break;
+            } else {
+                sum += list.get(right++);
+            }
+        }
 
 		System.out.println(cnt);
 		
