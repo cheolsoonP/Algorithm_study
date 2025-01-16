@@ -16,11 +16,11 @@ class Solution {
     
     int[] prev; 
     int[] next; 
-    Stack<Node> stack; 
+    Deque<Node> deque; 
     StringBuilder sb; 
     
     public String solution(int n, int curr, String[] cmdList) {        
-        stack = new Stack<>(); 
+        deque = new ArrayDeque<>(); 
         sb = new StringBuilder();   
         prev = new int[n];
         next = new int[n]; 
@@ -51,7 +51,7 @@ class Solution {
         for (int i=0;i<n;i++) {
             sb.append("O");
         }
-        for (Node node : stack) {
+        for (Node node : deque) {
             sb.replace(node.curr, node.curr+1, "X");
         }
         return sb.toString(); 
@@ -72,7 +72,7 @@ class Solution {
     }
     
     private int remove (int curr) {
-        stack.push(new Node(prev[curr], next[curr], curr));
+        deque.push(new Node(prev[curr], next[curr], curr));
 
         // 양쪽 노드 연결 
         if(prev[curr] != -1) next[prev[curr]] = next[curr];
@@ -85,7 +85,7 @@ class Solution {
     }
     
     private void restore () {
-        Node node = stack.pop(); 
+        Node node = deque.pop(); 
 
         if (node.prev != -1) next[node.prev] = node.curr; 
         if (node.next != -1) prev[node.next] = node.curr; 
