@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.*; 
 
 class Solution {
-    public static class Node {
+    public class Node {
         int prev; 
         int next; 
         int curr; 
@@ -14,10 +14,10 @@ class Solution {
         }
     }
     
-    static int[] prev; 
-    static int[] next; 
-    static Stack<Node> stack; 
-    static StringBuilder sb; 
+    int[] prev; 
+    int[] next; 
+    Stack<Node> stack; 
+    StringBuilder sb; 
     
     public String solution(int n, int curr, String[] cmdList) {        
         stack = new Stack<>(); 
@@ -57,21 +57,21 @@ class Solution {
         return sb.toString(); 
     }
     
-    private static int up (int x, int curr) {
+    private int up (int x, int curr) {
         while (x-- > 0) {
             curr = prev[curr];
         }
         return curr; 
     }
     
-    private static int down (int x, int curr) {
+    private int down (int x, int curr) {
         while (x-- > 0) {
             curr = next[curr]; 
         }
         return curr; 
     }
     
-    private static int remove (int curr) {
+    private int remove (int curr) {
         stack.push(new Node(prev[curr], next[curr], curr));
 
         // 양쪽 노드 연결 
@@ -84,7 +84,7 @@ class Solution {
             return prev[curr];
     }
     
-    private static void restore () {
+    private void restore () {
         Node node = stack.pop(); 
 
         if (node.prev != -1) next[node.prev] = node.curr; 
